@@ -10,7 +10,11 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as UsersRouteImport } from './routes/users'
+import { Route as TrainRouteImport } from './routes/train'
+import { Route as ModelsRouteImport } from './routes/models'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as DatasetsRouteImport } from './routes/datasets'
+import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as ChatRouteImport } from './routes/chat'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApiUsersRouteImport } from './routes/api/users'
@@ -33,9 +37,29 @@ const UsersRoute = UsersRouteImport.update({
   path: '/users',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TrainRoute = TrainRouteImport.update({
+  id: '/train',
+  path: '/train',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ModelsRoute = ModelsRouteImport.update({
+  id: '/models',
+  path: '/models',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DatasetsRoute = DatasetsRouteImport.update({
+  id: '/datasets',
+  path: '/datasets',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ChatRoute = ChatRouteImport.update({
@@ -122,7 +146,11 @@ const DemoStartSsrDataOnlyRoute = DemoStartSsrDataOnlyRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/chat': typeof ChatRoute
+  '/dashboard': typeof DashboardRoute
+  '/datasets': typeof DatasetsRoute
   '/login': typeof LoginRoute
+  '/models': typeof ModelsRoute
+  '/train': typeof TrainRoute
   '/users': typeof UsersRoute
   '/api/chat-messages': typeof ApiChatMessagesRoute
   '/api/chat-threads': typeof ApiChatThreadsRoute
@@ -142,7 +170,11 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/chat': typeof ChatRoute
+  '/dashboard': typeof DashboardRoute
+  '/datasets': typeof DatasetsRoute
   '/login': typeof LoginRoute
+  '/models': typeof ModelsRoute
+  '/train': typeof TrainRoute
   '/users': typeof UsersRoute
   '/api/chat-messages': typeof ApiChatMessagesRoute
   '/api/chat-threads': typeof ApiChatThreadsRoute
@@ -163,7 +195,11 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/chat': typeof ChatRoute
+  '/dashboard': typeof DashboardRoute
+  '/datasets': typeof DatasetsRoute
   '/login': typeof LoginRoute
+  '/models': typeof ModelsRoute
+  '/train': typeof TrainRoute
   '/users': typeof UsersRoute
   '/api/chat-messages': typeof ApiChatMessagesRoute
   '/api/chat-threads': typeof ApiChatThreadsRoute
@@ -185,7 +221,11 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/chat'
+    | '/dashboard'
+    | '/datasets'
     | '/login'
+    | '/models'
+    | '/train'
     | '/users'
     | '/api/chat-messages'
     | '/api/chat-threads'
@@ -205,7 +245,11 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/chat'
+    | '/dashboard'
+    | '/datasets'
     | '/login'
+    | '/models'
+    | '/train'
     | '/users'
     | '/api/chat-messages'
     | '/api/chat-threads'
@@ -225,7 +269,11 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/chat'
+    | '/dashboard'
+    | '/datasets'
     | '/login'
+    | '/models'
+    | '/train'
     | '/users'
     | '/api/chat-messages'
     | '/api/chat-threads'
@@ -246,7 +294,11 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ChatRoute: typeof ChatRoute
+  DashboardRoute: typeof DashboardRoute
+  DatasetsRoute: typeof DatasetsRoute
   LoginRoute: typeof LoginRoute
+  ModelsRoute: typeof ModelsRoute
+  TrainRoute: typeof TrainRoute
   UsersRoute: typeof UsersRoute
   ApiChatMessagesRoute: typeof ApiChatMessagesRoute
   ApiChatThreadsRoute: typeof ApiChatThreadsRoute
@@ -273,11 +325,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UsersRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/train': {
+      id: '/train'
+      path: '/train'
+      fullPath: '/train'
+      preLoaderRoute: typeof TrainRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/models': {
+      id: '/models'
+      path: '/models'
+      fullPath: '/models'
+      preLoaderRoute: typeof ModelsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/login': {
       id: '/login'
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/datasets': {
+      id: '/datasets'
+      path: '/datasets'
+      fullPath: '/datasets'
+      preLoaderRoute: typeof DatasetsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/chat': {
@@ -398,7 +478,11 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ChatRoute: ChatRoute,
+  DashboardRoute: DashboardRoute,
+  DatasetsRoute: DatasetsRoute,
   LoginRoute: LoginRoute,
+  ModelsRoute: ModelsRoute,
+  TrainRoute: TrainRoute,
   UsersRoute: UsersRoute,
   ApiChatMessagesRoute: ApiChatMessagesRoute,
   ApiChatThreadsRoute: ApiChatThreadsRoute,

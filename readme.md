@@ -1,4 +1,4 @@
-# genx.ai
+# [genx.ai](https://genx.ai)
 
 Currently being used as hub to do research on LLMs, how they work and more.
 

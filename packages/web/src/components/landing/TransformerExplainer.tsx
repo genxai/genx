@@ -1,4 +1,6 @@
 import * as React from "react"
+import { Link } from "@tanstack/react-router"
+import { AppLayout, PageHeader, Card, InfoBox } from "../layout/AppLayout"
 
 const stages = [
   {
@@ -55,19 +57,35 @@ export function TransformerExplainer() {
   const [activeStage, setActiveStage] = React.useState(0)
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white">
-      {/* Header */}
-      <header className="border-b border-white/10 px-6 py-4">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <h1 className="text-xl font-semibold tracking-tight">GenX</h1>
-          <p className="text-sm text-white/50">
-            Understanding Language Models
+    <AppLayout>
+      {/* Hero Section */}
+      <div className="border-b border-white/10 px-6 py-12 bg-gradient-to-b from-cyan-500/10 via-purple-500/5 to-transparent">
+        <div className="max-w-7xl mx-auto text-center">
+          <h1 className="text-5xl font-bold mb-4">
+            Learn LLMs by <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">Building</span>
+          </h1>
+          <p className="text-xl text-white/60 mb-8 max-w-2xl mx-auto">
+            Understand transformers from first principles, then train your own models with Tinker's distributed infrastructure.
           </p>
+          <div className="flex gap-4 justify-center">
+            <Link
+              to="/datasets"
+              className="px-6 py-3 bg-white text-black rounded-lg font-medium hover:bg-white/90 transition-colors"
+            >
+              Start Training
+            </Link>
+            <button
+              onClick={() => document.getElementById('learn-section')?.scrollIntoView({ behavior: 'smooth' })}
+              className="px-6 py-3 bg-white/10 rounded-lg font-medium hover:bg-white/20 transition-colors"
+            >
+              Learn First
+            </button>
+          </div>
         </div>
-      </header>
+      </div>
 
       {/* Stage Navigation */}
-      <nav className="border-b border-white/10 px-6 py-3 sticky top-0 bg-[#0a0a0a]/95 backdrop-blur z-10">
+      <nav id="learn-section" className="border-b border-white/10 px-6 py-3 sticky top-0 bg-[#0a0a0a]/95 backdrop-blur z-10">
         <div className="max-w-7xl mx-auto flex gap-2 overflow-x-auto">
           {stages.map((stage, i) => (
             <button
@@ -135,7 +153,23 @@ export function TransformerExplainer() {
           </div>
         </div>
       </main>
-    </div>
+
+      {/* CTA Section */}
+      <section className="border-t border-white/10 px-6 py-16">
+        <div className="max-w-7xl mx-auto text-center">
+          <h2 className="text-3xl font-bold mb-4">Ready to Train Your Own Model?</h2>
+          <p className="text-white/60 mb-8 max-w-xl mx-auto">
+            Upload your dataset, pick a base model, and let Tinker handle the distributed training infrastructure.
+          </p>
+          <Link
+            to="/datasets"
+            className="inline-block px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-500 text-white rounded-lg font-semibold hover:opacity-90 transition-opacity"
+          >
+            Get Started
+          </Link>
+        </div>
+      </section>
+    </AppLayout>
   )
 }
 
