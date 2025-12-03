@@ -1,6 +1,6 @@
 import * as React from "react"
 import { Link } from "@tanstack/react-router"
-import { AppLayout, PageHeader, Card, InfoBox } from "../layout/AppLayout"
+import { Card, InfoBox } from "../layout/AppLayout"
 
 const stages = [
   {
@@ -57,7 +57,7 @@ export function TransformerExplainer() {
   const [activeStage, setActiveStage] = React.useState(0)
 
   return (
-    <AppLayout>
+    <>
       {/* Hero Section */}
       <div className="border-b border-white/10 px-6 py-12 bg-gradient-to-b from-cyan-500/10 via-purple-500/5 to-transparent">
         <div className="max-w-7xl mx-auto text-center">
@@ -69,7 +69,7 @@ export function TransformerExplainer() {
           </p>
           <div className="flex gap-4 justify-center">
             <Link
-              to="/datasets"
+              to="/infra/train"
               className="px-6 py-3 bg-white text-black rounded-lg font-medium hover:bg-white/90 transition-colors"
             >
               Start Training
@@ -162,14 +162,14 @@ export function TransformerExplainer() {
             Upload your dataset, pick a base model, and let Tinker handle the distributed training infrastructure.
           </p>
           <Link
-            to="/datasets"
+            to="/infra/train"
             className="inline-block px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-500 text-white rounded-lg font-semibold hover:opacity-90 transition-opacity"
           >
             Get Started
           </Link>
         </div>
       </section>
-    </AppLayout>
+    </>
   )
 }
 
