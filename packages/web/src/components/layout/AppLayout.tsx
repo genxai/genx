@@ -5,6 +5,7 @@ import { authClient } from "@/lib/auth-client"
 // Main navigation sections
 const navSections = [
   { path: "/", label: "Learn" },
+  { path: "/research", label: "Research" },
   { path: "/models", label: "Models" },
   { path: "/infra", label: "Infra" },
 ]

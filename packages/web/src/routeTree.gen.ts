@@ -14,7 +14,9 @@ import { Route as ModelsRouteImport } from './routes/models'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as ChatRouteImport } from './routes/chat'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ResearchIndexRouteImport } from './routes/research/index'
 import { Route as InfraIndexRouteImport } from './routes/infra/index'
+import { Route as ResearchComputerUseRouteImport } from './routes/research/computer-use'
 import { Route as InfraTrainRouteImport } from './routes/infra/train'
 import { Route as InfraPlaygroundRouteImport } from './routes/infra/playground'
 import { Route as InfraDeployRouteImport } from './routes/infra/deploy'
@@ -59,9 +61,19 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResearchIndexRoute = ResearchIndexRouteImport.update({
+  id: '/research/',
+  path: '/research/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const InfraIndexRoute = InfraIndexRouteImport.update({
   id: '/infra/',
   path: '/infra/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResearchComputerUseRoute = ResearchComputerUseRouteImport.update({
+  id: '/research/computer-use',
+  path: '/research/computer-use',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InfraTrainRoute = InfraTrainRouteImport.update({
@@ -168,7 +180,9 @@ export interface FileRoutesByFullPath {
   '/infra/deploy': typeof InfraDeployRoute
   '/infra/playground': typeof InfraPlaygroundRoute
   '/infra/train': typeof InfraTrainRoute
+  '/research/computer-use': typeof ResearchComputerUseRoute
   '/infra': typeof InfraIndexRoute
+  '/research': typeof ResearchIndexRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/api/chat/ai': typeof ApiChatAiRoute
   '/api/chat/guest': typeof ApiChatGuestRoute
@@ -194,7 +208,9 @@ export interface FileRoutesByTo {
   '/infra/deploy': typeof InfraDeployRoute
   '/infra/playground': typeof InfraPlaygroundRoute
   '/infra/train': typeof InfraTrainRoute
+  '/research/computer-use': typeof ResearchComputerUseRoute
   '/infra': typeof InfraIndexRoute
+  '/research': typeof ResearchIndexRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/api/chat/ai': typeof ApiChatAiRoute
   '/api/chat/guest': typeof ApiChatGuestRoute
@@ -221,7 +237,9 @@ export interface FileRoutesById {
   '/infra/deploy': typeof InfraDeployRoute
   '/infra/playground': typeof InfraPlaygroundRoute
   '/infra/train': typeof InfraTrainRoute
+  '/research/computer-use': typeof ResearchComputerUseRoute
   '/infra/': typeof InfraIndexRoute
+  '/research/': typeof ResearchIndexRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/api/chat/ai': typeof ApiChatAiRoute
   '/api/chat/guest': typeof ApiChatGuestRoute
@@ -249,7 +267,9 @@ export interface FileRouteTypes {
     | '/infra/deploy'
     | '/infra/playground'
     | '/infra/train'
+    | '/research/computer-use'
     | '/infra'
+    | '/research'
     | '/api/auth/$'
     | '/api/chat/ai'
     | '/api/chat/guest'
@@ -275,7 +295,9 @@ export interface FileRouteTypes {
     | '/infra/deploy'
     | '/infra/playground'
     | '/infra/train'
+    | '/research/computer-use'
     | '/infra'
+    | '/research'
     | '/api/auth/$'
     | '/api/chat/ai'
     | '/api/chat/guest'
@@ -301,7 +323,9 @@ export interface FileRouteTypes {
     | '/infra/deploy'
     | '/infra/playground'
     | '/infra/train'
+    | '/research/computer-use'
     | '/infra/'
+    | '/research/'
     | '/api/auth/$'
     | '/api/chat/ai'
     | '/api/chat/guest'
@@ -328,7 +352,9 @@ export interface RootRouteChildren {
   InfraDeployRoute: typeof InfraDeployRoute
   InfraPlaygroundRoute: typeof InfraPlaygroundRoute
   InfraTrainRoute: typeof InfraTrainRoute
+  ResearchComputerUseRoute: typeof ResearchComputerUseRoute
   InfraIndexRoute: typeof InfraIndexRoute
+  ResearchIndexRoute: typeof ResearchIndexRoute
   ApiAuthSplatRoute: typeof ApiAuthSplatRoute
   ApiChatAiRoute: typeof ApiChatAiRoute
   ApiChatGuestRoute: typeof ApiChatGuestRoute
@@ -379,11 +405,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/research/': {
+      id: '/research/'
+      path: '/research'
+      fullPath: '/research'
+      preLoaderRoute: typeof ResearchIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/infra/': {
       id: '/infra/'
       path: '/infra'
       fullPath: '/infra'
       preLoaderRoute: typeof InfraIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/research/computer-use': {
+      id: '/research/computer-use'
+      path: '/research/computer-use'
+      fullPath: '/research/computer-use'
+      preLoaderRoute: typeof ResearchComputerUseRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/infra/train': {
@@ -528,7 +568,9 @@ const rootRouteChildren: RootRouteChildren = {
   InfraDeployRoute: InfraDeployRoute,
   InfraPlaygroundRoute: InfraPlaygroundRoute,
   InfraTrainRoute: InfraTrainRoute,
+  ResearchComputerUseRoute: ResearchComputerUseRoute,
   InfraIndexRoute: InfraIndexRoute,
+  ResearchIndexRoute: ResearchIndexRoute,
   ApiAuthSplatRoute: ApiAuthSplatRoute,
   ApiChatAiRoute: ApiChatAiRoute,
   ApiChatGuestRoute: ApiChatGuestRoute,
